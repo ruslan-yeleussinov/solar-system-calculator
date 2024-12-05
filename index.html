@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar System Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Solar System Calculator</h1>
+
+  <div id="diameter-input-div">
+    <p>If the diameter of the</p>
+
+    <select id="select-diameter-planet">
+      <option value="0">Sun</option>
+      <option value="1">Mercury</option>
+      <option value="2">Venus</option>
+      <option value="3">Earth</option>
+      <option value="4">Mars</option>
+      <option value="5">Jupiter</option>
+      <option value="6">Saturn</option>
+      <option value="7">Uranus</option>
+      <option value="8">Neptune</option>
+      <option value="9">Moon</option>
+    </select>
+    
+    <p>is</p>
+
+    <input type="text" id="diameter-input" placeholder="Enter a number">
+
+    <select id="select-diameter-unit">
+      <option value="km">km</option>
+      <option value="m">m</option>
+      <option value="cm">cm</option>
+      <option value="mm">mm</option>
+    </select>
+
+    <button type="button" id="calculate-diameter-button">Calculate</button>
+  </div>
+
+  <div id="distance-input-div">
+    <p>If the distance of the</p>
+
+    <select id="select-distance-planet">
+      <option value="select-distance-mercury">Mercury</option>
+      <option value="select-distance-venus">Venus</option>
+      <option value="select-distance-earth">Earth</option>
+      <option value="select-distance-mars">Mars</option>
+      <option value="select-distance-jupiter">Jupiter</option>
+      <option value="select-distance-saturn">Saturn</option>
+      <option value="select-distance-uranus">Uranus</option>
+      <option value="select-distance-neptune">Neptune</option>
+    </select>
+    
+    <p>from the Sun is</p>
+
+    <input type="text" id="distance-input" placeholder="Enter a number">
+
+    <select id="select-distance-unit">
+      <option value="select-distance-km">km</option>
+      <option value="select-distance-m">m</option>
+      <option value="select-distance-cm">cm</option>
+      <option value="select-distance-mm">mm</option>
+    </select>
+
+    <button type="button" id="calculate-distance-button">Calculate</button>
+  </div>
+
+  <table>
+    <tr>
+      <th colspan="2" class="centered-header original-header">Original</th>
+      <th></th>
+      <th colspan="4" class="centered-header model-header">Model</th>
+    </tr>
+    <tr>
+      <th class="centered-header two-original-headers">Diameter of the planet</th>
+      <th class="centered-header two-original-headers">Distance from the Sun</th>
+      <th class="centered-header planet-header">Planet</th> 
+      <th class="centered-header two-model-headers" colspan="2">Diameter of the planet</th>
+      <th class="centered-header two-model-headers" colspan="2">Distance from the Sun</th>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-sun">1 392 700</td>
+      <td class="diameter-distance" id="original-distance-sun">0</td>
+      <td class="planet sun">Sun</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-sun"></td>
+      <td class="unit unit-diameter" id="unit-diameter-sun"></td>
+      <td class="diameter-distance model-distance" id="model-distance-sun"></td>
+      <td class="unit unit-distance" id="unit-distance-sun"></td>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-mercury">4 878</td>
+      <td class="diameter-distance" id="original-distance-mercury">57 910 000</td>
+      <td class="planet mercury">Mercury</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-mercury"></td>
+      <td class="unit unit-diameter" id="unit-diameter-mercury"></td>
+      <td class="diameter-distance model-distance" id="model-distance-mercury"></td>
+      <td class="unit unit-distance" id="unit-distance-mercury"></td>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-venus">12 104</td>
+      <td class="diameter-distance" id="original-distance-venus">108 200 000</td>
+      <td class="planet venus">Venus</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-venus"></td>
+      <td class="unit unit-diameter" id="unit-diameter-venus"></td>
+      <td class="diameter-distance model-distance" id="model-distance-venus"></td>
+      <td class="unit unit-distance" id="unit-distance-venus"></td>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-earth">12 756</td>
+      <td class="diameter-distance" id="original-distance-earth">149 600 000</td>
+      <td class="planet earth">Earth</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-earth"></td>
+      <td class="unit unit-diameter" id="unit-diameter-earth"></td>
+      <td class="diameter-distance model-distance" id="model-distance-earth"></td>
+      <td class="unit unit-distance" id="unit-distance-earth"></td>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-mars">6 779</td>
+      <td class="diameter-distance" id="original-distance-mars">227 900 000</td>
+      <td class="planet mars">Mars</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-mars"></td>
+      <td class="unit unit-diameter" id="unit-diameter-mars"></td>
+      <td class="diameter-distance model-distance" id="model-distance-mars"></td>
+      <td class="unit unit-distance" id="unit-distance-mars"></td>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-jupiter">139 820</td>
+      <td class="diameter-distance" id="original-distance-jupiter">778 500 000</td>
+      <td class="planet jupiter">Jupiter</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-jupiter"></td>
+      <td class="unit unit-diameter" id="unit-diameter-jupiter"></td>
+      <td class="diameter-distance model-distance" id="model-distance-jupiter"></td>
+      <td class="unit unit-distance" id="unit-distance-jupiter"></td>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-saturn">116 460</td>
+      <td class="diameter-distance" id="original-distance-saturn">1 429 000 000</td>
+      <td class="planet saturn">Saturn</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-saturn"></td>
+      <td class="unit unit-diameter" id="unit-diameter-saturn"></td>
+      <td class="diameter-distance model-distance" id="model-distance-saturn"></td>
+      <td class="unit unit-distance" id="unit-distance-saturn"></td>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-uranus">50 724</td>
+      <td class="diameter-distance" id="original-distance-uranus">2 875 000 000</td>
+      <td class="planet uranus">Uranus</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-uranus"></td>
+      <td class="unit unit-diameter" id="unit-diameter-uranus"></td>
+      <td class="diameter-distance model-distance" id="model-distance-uranus"></td>
+      <td class="unit unit-distance" id="unit-distance-uranus"></td>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-neptune">49 244</td>
+      <td class="diameter-distance" id="original-distance-neptune">4 497 000 000</td>
+      <td class="planet neptune">Neptune</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-neptune"></td>
+      <td class="unit unit-diameter" id="unit-diameter-neptune"></td>
+      <td class="diameter-distance model-distance" id="model-distance-neptune"></td>
+      <td class="unit unit-distance" id="unit-distance-neptune"></td>
+    </tr>
+  </table>
+
+  <table id="moon-table">
+    <tr>
+      <th class="centered-header two-original-headers">Diameter of the planet</th>
+      <th class="centered-header two-original-headers">Distance from the Earth</th>
+      <th class="centered-header planet-header">planet</th>
+      <th class="centered-header two-model-headers" colspan="2">Diameter of the planet</th>
+      <th class="centered-header two-model-headers" colspan="2">Distance from the Earth</th>
+    </tr>
+    <tr>
+      <td class="diameter-distance" id="original-diameter-moon">3 475</td>
+      <td class="diameter-distance" id="original-distance-moon">384 403</td>
+      <td class="planet moon">Moon</td>
+      <td class="diameter-distance model-diameter" id="model-diameter-moon"></td>
+      <td class="unit unit-diameter" id="unit-diameter-moon"></td>
+      <td class="diameter-distance model-distance" id="model-distance-moon"></td>
+      <td class="unit unit-distance" id="unit-distance-moon"></td>
+    </tr>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>

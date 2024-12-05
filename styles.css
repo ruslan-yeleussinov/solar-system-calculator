@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;1,300&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(14, 14, 29);
+  color: white;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* INPUT SETION */
+
+#diameter-input-div,
+#distance-input-div {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+
+p {
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+#diameter-input,
+#distance-input {
+  margin: 0 10px;
+  height: 20px;
+  padding-left: 5px;
+}
+
+#select-diameter-planet,
+#select-diameter-unit,
+#calculate-diameter-button,
+#select-distance-planet,
+#select-distance-unit,
+#calculate-distance-button {
+  margin: 0 10px;
+  height: 25px;
+}
+
+/* TABLE SETION */
+
+table {
+  width: 95%;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  height: 25px;
+  text-align: right;
+}
+
+.centered-header {
+  text-align: center;
+}
+
+.planet {
+  text-align: center;
+}
+
+.two-original-headers {
+  width: 18%;
+}
+
+.two-model-headers {
+  width: 27%;
+}
+
+.planet-header {
+  width: 10%;
+}
+
+.unit {
+  width: 4%;
+  text-align: center;
+}
+
+.diameter-distance {
+  padding-right: 10px;
+  padding-left: -10px;
+}
+
+/* MOON TABLE */
+
+#moon-table {
+  margin-top: 30px;
+}
