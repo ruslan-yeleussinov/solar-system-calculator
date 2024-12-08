@@ -74,27 +74,24 @@ const unitDistanceMoon = document.getElementById("unit-distance-moon").innerText
 
 calculateDiameterButton.addEventListener("click", () => {
   const selectDiameterPlanetIndex = document.getElementById("select-diameter-planet").value;
-  console.log("selected planet index: ", selectDiameterPlanetIndex);
 
   const inputDiameter = Number(document.getElementById("diameter-input").value);
-  console.log("input diameter: ", inputDiameter);
 
   const selectDiameterUnit = document.getElementById("select-diameter-unit");
-  console.log("selected unit: ", selectDiameterUnit.value);
   
   calculateNewModelAcordingToNewDiameter(selectDiameterPlanetIndex, inputDiameter, selectDiameterUnit.value);
 });
 
 function calculateNewModelAcordingToNewDiameter(selectedPlanetIndex, newDiameter, selectedUnit) {
   const originalDiametersArray = [originalDiameterSun, originalDiameterMercury, originalDiameterVenus, originalDiameterEarth, originalDiameterMars, originalDiameterJupiter, originalDiameterSaturn, originalDiameterUranus, originalDiameterNeptune, originalDiameterMoon];
-  console.log("original Diameters Array: ", originalDiametersArray);
   
   const originalDistancesArray = [originalDistanceSun, originalDistanceMercury, originalDistanceVenus, originalDistanceEarth, originalDistanceMars, originalDistanceJupiter, originalDistanceSaturn, originalDistanceUranus, originalDistanceNeptune, originalDistanceMoon];
-  console.log("original Distances Array: ", originalDistancesArray);
 
   const modelDiametersArray = [];
   const modelDistancesArray = [];
   let scale = 0; 
+
+  
 
   if (selectedUnit === "m") {
     scale = (originalDiametersArray[Number(selectedPlanetIndex)] * 1000) / newDiameter; 
@@ -105,10 +102,11 @@ function calculateNewModelAcordingToNewDiameter(selectedPlanetIndex, newDiameter
   } else {
     scale = originalDiametersArray[Number(selectedPlanetIndex)] / newDiameter; 
   }
-  console.log("scale: ", scale);
+
   
   let modelHeader = document.querySelector(".model-header");
   modelHeader.innerHTML = "Scale " + "1 : " + scale.toLocaleString();
+
 
   for (let i = 0; i < originalDiametersArray.length; i++) {
     const originalDiameter = originalDiametersArray[i];
@@ -119,57 +117,93 @@ function calculateNewModelAcordingToNewDiameter(selectedPlanetIndex, newDiameter
     } else if (selectedUnit === "m") {
       const modelDiameter = originalDiameter / (scale / 1000);
       modelDiametersArray.push(modelDiameter);
-    } else if (selectedUnit = "cm") {
+    } else if (selectedUnit === "cm") {
       const modelDiameter = originalDiameter / (scale / 100000);
       modelDiametersArray.push(modelDiameter);
-    } else if (selectedUnit = "mm") {
+    } else if (selectedUnit === "mm") {
       const modelDiameter = originalDiameter / (scale / 1000000);
       modelDiametersArray.push(modelDiameter);
     }
-
-    // const modelDiameter = originalDiameter / scale;
-    // modelDiametersArray.push(modelDiameter);
   }
-  console.log("model Diameters Array: ", modelDiametersArray);
+
 
   for (let i = 0; i < originalDistancesArray.length; i++) {
     const originalDistance = originalDistancesArray[i];
     const modelDistance = originalDistance / scale;
     modelDistancesArray.push(modelDistance);
   }
-  console.log("model Distances Array: ", modelDistancesArray);
+
+
+
+
+
+
+
 
   for (let i = 0; i < modelDiametersArray.length; i++) {
     const modelDiameter = modelDiametersArray[i];
 
-    document.querySelectorAll(".model-diameter")[i].innerText = modelDiameter.toLocaleString(); 
-    document.querySelectorAll(".unit-diameter")[i].innerText = selectedUnit;
+    if (modelDiameter >= 1) {
+      console.log(i, 'modelDiameter >= 1');
+      document.querySelectorAll(".model-diameter")[i].innerText = modelDiameter.toLocaleString(); 
+      document.querySelectorAll(".unit-diameter")[i].innerText = selectedUnit;
 
-    // if (modelDiameter < 1 && selectedUnit === "km") {
-    //   document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter * 1000).toLocaleString(); 
-    //   document.querySelectorAll(".unit-diameter")[i].innerText = "m";
-    // } else if (modelDiameter < 1 && selectedUnit === "m") {
-    //   document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter * 100).toLocaleString(); 
-    //   document.querySelectorAll(".unit-diameter")[i].innerText = "cm";
-    // } else {
-    //   document.querySelectorAll(".model-diameter")[i].innerText = modelDiameter.toLocaleString(); 
-    //   document.querySelectorAll(".unit-diameter")[i].innerText = selectedUnit;
-    // }
-     
+    } else if (modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "km") {
+      console.log(i, 'modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "km"');
+      document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter * 1000).toLocaleString(); 
+      document.querySelectorAll(".unit-diameter")[i].innerText = "m"; 
+      
+    } else if (modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "m") {
+      console.log(i, 'modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "m"');
+      document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter * 100).toLocaleString(); 
+      document.querySelectorAll(".unit-diameter")[i].innerText = "cm"; 
+      
+      
+    } else if (modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "cm") {
+      console.log(i, 'modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "cm"');
+      document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter * 10).toLocaleString(); 
+      document.querySelectorAll(".unit-diameter")[i].innerText = "mm"; 
+      
+    } else if (modelDiameter < 1 && selectedUnit === "mm") {
+      console.log(i, "modelDiameter < 1 && selectedUnit === 'mm'");
+      document.querySelectorAll(".model-diameter")[i].innerText = modelDiameter.toLocaleString(); 
+      document.querySelectorAll(".unit-diameter")[i].innerText = "mm"; 
+       
+    }    
   }
 
-  for (let i = 0; i < modelDistancesArray.length; i++) {
-    const modelDistance = modelDistancesArray[i];
 
-    document.querySelectorAll(".model-distance")[i].innerText = modelDistance.toLocaleString(); 
-    document.querySelectorAll(".unit-distance")[i].innerText = selectedUnit;
+
+
+  
+
+  if (scale <= 1000000000) {  
+    for (let i = 0; i < modelDistancesArray.length; i++) {
+      const modelDistance = modelDistancesArray[i];  
+  
+      document.querySelectorAll(".model-distance")[i].innerText = modelDistance.toLocaleString(); 
+      document.querySelectorAll(".unit-distance")[i].innerText = "km";
+    }
+  } else if (scale > 1000000000 && scale <= 1000000000000) {
+    for (let i = 0; i < modelDistancesArray.length; i++) {
+      const modelDistance = modelDistancesArray[i];  
+  
+      document.querySelectorAll(".model-distance")[i].innerText = (modelDistance * 1000).toLocaleString(); 
+      document.querySelectorAll(".unit-distance")[i].innerText = "m";
+    }
+  } else if (scale > 1000000000000 && scale <= 100000000000000) {  
+    for (let i = 0; i < modelDistancesArray.length; i++) {
+      const modelDistance = modelDistancesArray[i];  
+  
+      document.querySelectorAll(".model-distance")[i].innerText = (modelDistance * 100000).toLocaleString(); 
+      document.querySelectorAll(".unit-distance")[i].innerText = "cm";
+    }
+  } else if (scale > 100000000000000 && scale <= 1000000000000000) {
+    for (let i = 0; i < modelDistancesArray.length; i++) {
+      const modelDistance = modelDistancesArray[i];  
+  
+      document.querySelectorAll(".model-distance")[i].innerText = (modelDistance * 1000000).toLocaleString(); 
+      document.querySelectorAll(".unit-distance")[i].innerText = "mm";
+    }
   }
-
-  console.log("---------------------------------");
-  console.log("---------------------------------");
-  console.log("---------------------------------");
 }
-
-
-
-
