@@ -1,29 +1,27 @@
-const selectDiameterUnit = document.getElementById("select-diameter-unit");
-const selectDistanceUnit = document.getElementById("select-distance-unit");
-const calculateDiameterButton = document.getElementById("calculate-diameter-button");
-const calculateDistanceButton = document.getElementById("calculate-distance-button");
+const firstButton = document.getElementById("calculate-diameter-button");
+const secondButton = document.getElementById("calculate-distance-button");
 
-const originalDiameterSun = Number(document.getElementById("original-diameter-sun").innerText.replace(/ /g, ''));
-const originalDiameterMercury = Number(document.getElementById("original-diameter-mercury").innerText.replace(/ /g, ''));
-const originalDiameterVenus = Number(document.getElementById("original-diameter-venus").innerText.replace(/ /g, ''));
-const originalDiameterEarth = Number(document.getElementById("original-diameter-earth").innerText.replace(/ /g, ''));
-const originalDiameterMars = Number(document.getElementById("original-diameter-mars").innerText.replace(/ /g, ''));
-const originalDiameterJupiter = Number(document.getElementById("original-diameter-jupiter").innerText.replace(/ /g, ''));
-const originalDiameterSaturn = Number(document.getElementById("original-diameter-saturn").innerText.replace(/ /g, ''));
-const originalDiameterUranus = Number(document.getElementById("original-diameter-uranus").innerText.replace(/ /g, ''));
-const originalDiameterNeptune = Number(document.getElementById("original-diameter-neptune").innerText.replace(/ /g, ''));
-const originalDiameterMoon = Number(document.getElementById("original-diameter-moon").innerText.replace(/ /g, ''));
+const originalDiameterInKmSun = Number(document.getElementById("original-diameter-sun").innerText.replace(/ /g, ''));
+const originalDiameterInKmMercury = Number(document.getElementById("original-diameter-mercury").innerText.replace(/ /g, ''));
+const originalDiameterInKmVenus = Number(document.getElementById("original-diameter-venus").innerText.replace(/ /g, ''));
+const originalDiameterInKmEarth = Number(document.getElementById("original-diameter-earth").innerText.replace(/ /g, ''));
+const originalDiameterInKmMars = Number(document.getElementById("original-diameter-mars").innerText.replace(/ /g, ''));
+const originalDiameterInKmJupiter = Number(document.getElementById("original-diameter-jupiter").innerText.replace(/ /g, ''));
+const originalDiameterInKmSaturn = Number(document.getElementById("original-diameter-saturn").innerText.replace(/ /g, ''));
+const originalDiameterInKmUranus = Number(document.getElementById("original-diameter-uranus").innerText.replace(/ /g, ''));
+const originalDiameterInKmNeptune = Number(document.getElementById("original-diameter-neptune").innerText.replace(/ /g, ''));
+const originalDiameterInKmMoon = Number(document.getElementById("original-diameter-moon").innerText.replace(/ /g, ''));
 
-const originalDistanceSun = Number(document.getElementById("original-distance-sun").innerText.replace(/ /g, ''));
-const originalDistanceMercury = Number(document.getElementById("original-distance-mercury").innerText.replace(/ /g, ''));
-const originalDistanceVenus = Number(document.getElementById("original-distance-venus").innerText.replace(/ /g, ''));
-const originalDistanceEarth = Number(document.getElementById("original-distance-earth").innerText.replace(/ /g, ''));
-const originalDistanceMars = Number(document.getElementById("original-distance-mars").innerText.replace(/ /g, ''));
-const originalDistanceJupiter = Number(document.getElementById("original-distance-jupiter").innerText.replace(/ /g, ''));
-const originalDistanceSaturn = Number(document.getElementById("original-distance-saturn").innerText.replace(/ /g, ''));
-const originalDistanceUranus = Number(document.getElementById("original-distance-uranus").innerText.replace(/ /g, ''));
-const originalDistanceNeptune = Number(document.getElementById("original-distance-neptune").innerText.replace(/ /g, ''));
-const originalDistanceMoon = Number(document.getElementById("original-distance-moon").innerText.replace(/ /g, ''));
+const originalDistanceInKmSun = Number(document.getElementById("original-distance-sun").innerText.replace(/ /g, ''));
+const originalDistanceInKmMercury = Number(document.getElementById("original-distance-mercury").innerText.replace(/ /g, ''));
+const originalDistanceInKmVenus = Number(document.getElementById("original-distance-venus").innerText.replace(/ /g, ''));
+const originalDistanceInKmEarth = Number(document.getElementById("original-distance-earth").innerText.replace(/ /g, ''));
+const originalDistanceInKmMars = Number(document.getElementById("original-distance-mars").innerText.replace(/ /g, ''));
+const originalDistanceInKmJupiter = Number(document.getElementById("original-distance-jupiter").innerText.replace(/ /g, ''));
+const originalDistanceInKmSaturn = Number(document.getElementById("original-distance-saturn").innerText.replace(/ /g, ''));
+const originalDistanceInKmUranus = Number(document.getElementById("original-distance-uranus").innerText.replace(/ /g, ''));
+const originalDistanceInKmNeptune = Number(document.getElementById("original-distance-neptune").innerText.replace(/ /g, ''));
+const originalDistanceInKmMoon = Number(document.getElementById("original-distance-moon").innerText.replace(/ /g, ''));
 
 const modelDiameterSun = document.getElementById("model-diameter-sun").innerText;
 const modelDiameterMercury = document.getElementById("model-diameter-mercury").innerText;
@@ -71,139 +69,192 @@ const unitDistanceMoon = document.getElementById("unit-distance-moon").innerText
 
 
 
+// ARRAYS OF ORIGINAL DIAMETERS IN DIFFERENT UNITS
+console.log('ARRAYS OF ORIGINAL DIAMETERS IN DIFFERENT UNITS\n\n');
 
-calculateDiameterButton.addEventListener("click", () => {
-  const selectDiameterPlanetIndex = document.getElementById("select-diameter-planet").value;
+// create array of original diameters of the planets in kilometers
+const originalDiametersInKilometersArray = [originalDiameterInKmSun, originalDiameterInKmMercury, originalDiameterInKmVenus, originalDiameterInKmEarth, originalDiameterInKmMars, originalDiameterInKmJupiter, originalDiameterInKmSaturn, originalDiameterInKmUranus, originalDiameterInKmNeptune, originalDiameterInKmMoon];
+console.log('Array of original diameters of the planets in kilometers:\n', originalDiametersInKilometersArray);
 
-  const inputDiameter = Number(document.getElementById("diameter-input").value);
+// create array of original diameters of the planets in meters
+const originalDiametersInMetersArray = [];
+for (let i = 0; i < originalDiametersInKilometersArray.length; i++) {
+  const originalDiameterInKilometers = originalDiametersInKilometersArray[i];
+  originalDiametersInMetersArray.push(originalDiameterInKilometers * 1000);
+}
+console.log('Array of original diameters of the planets in meters:\n', originalDiametersInMetersArray);
 
-  const selectDiameterUnit = document.getElementById("select-diameter-unit");
+// create array of original diameters of the planets in centimeters
+const originalDiametersInCentimetersArray = [];
+for (let i = 0; i < originalDiametersInMetersArray.length; i++) {
+  const originalDiameterInMeters = originalDiametersInMetersArray[i];
+  originalDiametersInCentimetersArray.push(originalDiameterInMeters * 100);
+}
+console.log('Array of original diameters of the planets in centimeters:\n', originalDiametersInCentimetersArray);
+
+// create array of original diameters of the planets in millimeters
+const originalDiametersInMillimetersArray = [];
+for (let i = 0; i < originalDiametersInCentimetersArray.length; i++) {
+  const originalDiameterInCentimeters = originalDiametersInCentimetersArray[i];
+  originalDiametersInMillimetersArray.push(originalDiameterInCentimeters * 10);
+}
+console.log('Array of original diameters of the planets in millimeters:\n', originalDiametersInMillimetersArray);
+
+// Four diameters arrays in one big array
+diametersArray = [originalDiametersInKilometersArray, originalDiametersInMetersArray, originalDiametersInCentimetersArray, originalDiametersInMillimetersArray];
+console.log('Diameters array\n', diametersArray);
+
+
+
+// ARRAYS OF ORIGINAL DISTANCES IN DIFFERENT UNITS
+console.log('\nARRAYS OF ORIGINAL DISTANCES IN DIFFERENT UNITS\n\n');
+
+// create array of original diameters of the planets in kilometers
+const originalDistancesInKilometersArray = [originalDistanceInKmSun, originalDistanceInKmMercury, originalDistanceInKmVenus, originalDistanceInKmEarth, originalDistanceInKmMars, originalDistanceInKmJupiter, originalDistanceInKmSaturn, originalDistanceInKmUranus, originalDistanceInKmNeptune, originalDistanceInKmMoon];
+console.log('Array of original distances of the planets in kilometers:\n', originalDistancesInKilometersArray);
+
+// create array of original diameters of the planets in meters
+const originalDistancesInMetersArray = [];
+for (let i = 0; i < originalDistancesInKilometersArray.length; i++) {
+  const originalDistanceInKilometers = originalDistancesInKilometersArray[i];
+  originalDistancesInMetersArray.push(originalDistanceInKilometers * 1000);
+}
+console.log('Array of original distances of the planets in meters:\n', originalDistancesInMetersArray);
+
+// create array of original distances of the planets in centimeters
+const originalDistancesInCentimetersArray = [];
+for (let i = 0; i < originalDistancesInMetersArray.length; i++) {
+  const originalDistanceInMeters = originalDistancesInMetersArray[i];
+  originalDistancesInCentimetersArray.push(originalDistanceInMeters * 100);
+}
+console.log('Array of original distances of the planets in centimeters:\n', originalDistancesInCentimetersArray);
+
+// create array of original distances of the planets in millimeters
+const originalDistancesInMillimetersArray = [];
+for (let i = 0; i < originalDistancesInCentimetersArray.length; i++) {
+  const originalDistanceInCentimeters = originalDistancesInCentimetersArray[i];
+  originalDistancesInMillimetersArray.push(originalDistanceInCentimeters * 10);
+}
+console.log('Array of original distances of the planets in millimeters:\n', originalDistancesInMillimetersArray);
+
+// Four distances array in one big array
+distancesArray = [originalDistancesInKilometersArray, originalDistancesInMetersArray, originalDistancesInCentimetersArray, originalDistancesInMillimetersArray];
+console.log('Distances array\n', distancesArray);
+
+
+
+// PLANETS' NAMES AND MEASUREMENT UNITS ARRAYS
+
+const firstArrayOfPlanetsNames = ["Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Moon"];
+const secondArrayOfPlanetsNames = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
+const unitsArray = ["km", "m", "cm", "mm"];
+
+
+
+// CALCULATE BUTTONS
+
+// First button calculates new model according to selected planet, its new diameter and selected measurement unit 
+firstButton.addEventListener("click", () => {
+
+  // Every selected planet has its own index that will be used to find the right name and diameter of this planet in the arrays of original diameters
+  const selectedPlanetIndex = document.getElementById("select-diameter-planet").value;
+  const selectedPlanet = firstArrayOfPlanetsNames[selectedPlanetIndex];
+  // Get number of new diameter
+  const newDiameter = Number(document.getElementById("diameter-input").value);
+  // Every selected mesurement unit has its own index that will be used to find the right unit and right diameters array for further calculations  
+  const selectedUnitIndex = document.getElementById("select-diameter-unit").value;
+  const selectedUnit = unitsArray[selectedUnitIndex];
+
+  console.log('\nNEW MODEL\n'); 
+  console.log(`\nSelected planet: ${selectedPlanet}`);
+  console.log(`New diameter: ${newDiameter} ${selectedUnit}`);
   
-  calculateNewModelAcordingToNewDiameter(selectDiameterPlanetIndex, inputDiameter, selectDiameterUnit.value);
+  calculateNewModelAcordingToNewDiameter(selectedPlanetIndex, newDiameter, selectedUnitIndex);
 });
 
-function calculateNewModelAcordingToNewDiameter(selectedPlanetIndex, newDiameter, selectedUnit) {
-  const originalDiametersArray = [originalDiameterSun, originalDiameterMercury, originalDiameterVenus, originalDiameterEarth, originalDiameterMars, originalDiameterJupiter, originalDiameterSaturn, originalDiameterUranus, originalDiameterNeptune, originalDiameterMoon];
-  
-  const originalDistancesArray = [originalDistanceSun, originalDistanceMercury, originalDistanceVenus, originalDistanceEarth, originalDistanceMars, originalDistanceJupiter, originalDistanceSaturn, originalDistanceUranus, originalDistanceNeptune, originalDistanceMoon];
-
+function calculateNewModelAcordingToNewDiameter(selectedPlanetIndex, newDiameter, selectedUnitIndex) {
+  // Create new empty model diameters and distances arrays
   const modelDiametersArray = [];
   const modelDistancesArray = [];
-  let scale = 0; 
 
-  
+  // Calculate new model scale
+  let scale = diametersArray[selectedUnitIndex][selectedPlanetIndex] / newDiameter;
+  console.log('Scale: ', scale, '\n');
 
-  if (selectedUnit === "m") {
-    scale = (originalDiametersArray[Number(selectedPlanetIndex)] * 1000) / newDiameter; 
-  } else if (selectedUnit === "cm") {
-    scale = (originalDiametersArray[Number(selectedPlanetIndex)] * 100000) / newDiameter; 
-  } else if (selectedUnit === "mm") {
-    scale = (originalDiametersArray[Number(selectedPlanetIndex)] * 1000000) / newDiameter; 
-  } else {
-    scale = originalDiametersArray[Number(selectedPlanetIndex)] / newDiameter; 
-  }
-
-  
+  // Display this scale on table's header 
   let modelHeader = document.querySelector(".model-header");
-  modelHeader.innerHTML = "Scale " + "1 : " + scale.toLocaleString();
+  modelHeader.innerHTML = "New Model Scale " + "1 : " + scale.toLocaleString();
 
-
-  for (let i = 0; i < originalDiametersArray.length; i++) {
-    const originalDiameter = originalDiametersArray[i];
-
-    if (selectedUnit === "km") {
-      const modelDiameter = originalDiameter / scale;
-      modelDiametersArray.push(modelDiameter);
-    } else if (selectedUnit === "m") {
-      const modelDiameter = originalDiameter / (scale / 1000);
-      modelDiametersArray.push(modelDiameter);
-    } else if (selectedUnit === "cm") {
-      const modelDiameter = originalDiameter / (scale / 100000);
-      modelDiametersArray.push(modelDiameter);
-    } else if (selectedUnit === "mm") {
-      const modelDiameter = originalDiameter / (scale / 1000000);
-      modelDiametersArray.push(modelDiameter);
-    }
+  // Calculate new model diameters
+  for (let i = 0; i < originalDiametersInMillimetersArray.length; i++) {
+    const originalDiameterInMillimeters = originalDiametersInMillimetersArray[i];
+    const modelDiameterInMillimeters = originalDiameterInMillimeters / scale;
+    modelDiametersArray.push(modelDiameterInMillimeters);
   }
+  console.log('\nArray of model diameters of the planets in millimeters\n', modelDiametersArray, '\n\n');
 
-
-  for (let i = 0; i < originalDistancesArray.length; i++) {
-    const originalDistance = originalDistancesArray[i];
-    const modelDistance = originalDistance / scale;
-    modelDistancesArray.push(modelDistance);
+  // Calculate new model distances and generate HTML
+  for (let i = 0; i < originalDistancesInMillimetersArray.length; i++) {
+    const originalDistanceInMillimeters = originalDistancesInMillimetersArray[i];
+    const modelDistanceInMillimeters = originalDistanceInMillimeters / scale;
+    modelDistancesArray.push(modelDistanceInMillimeters);
   }
+  console.log('\nArray of model distances from the Sun in millimeters\n', modelDistancesArray, '\n\n');
 
-
-
-
-
-
-
-
+  // Calculate new model diameters and generate HTML 
   for (let i = 0; i < modelDiametersArray.length; i++) {
     const modelDiameter = modelDiametersArray[i];
 
-    if (modelDiameter >= 1) {
-      console.log(i, 'modelDiameter >= 1');
+    if (modelDiameter < 10) {
+      console.log(i, 'modelDiameter < 10');
       document.querySelectorAll(".model-diameter")[i].innerText = modelDiameter.toLocaleString(); 
-      document.querySelectorAll(".unit-diameter")[i].innerText = selectedUnit;
+      document.querySelectorAll(".unit-diameter")[i].innerText = "mm";
 
-    } else if (modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "km") {
-      console.log(i, 'modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "km"');
-      document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter * 1000).toLocaleString(); 
-      document.querySelectorAll(".unit-diameter")[i].innerText = "m"; 
-      
-    } else if (modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "m") {
-      console.log(i, 'modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "m"');
-      document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter * 100).toLocaleString(); 
-      document.querySelectorAll(".unit-diameter")[i].innerText = "cm"; 
-      
-      
-    } else if (modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "cm") {
-      console.log(i, 'modelDiameter < 1 && modelDiameter >= 0.001 && selectedUnit === "cm"');
-      document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter * 10).toLocaleString(); 
-      document.querySelectorAll(".unit-diameter")[i].innerText = "mm"; 
-      
-    } else if (modelDiameter < 1 && selectedUnit === "mm") {
-      console.log(i, "modelDiameter < 1 && selectedUnit === 'mm'");
-      document.querySelectorAll(".model-diameter")[i].innerText = modelDiameter.toLocaleString(); 
-      document.querySelectorAll(".unit-diameter")[i].innerText = "mm"; 
-       
-    }    
+    } else if (modelDiameter >= 10 && modelDiameter < 1000) {
+      console.log(i, 'modelDiameter >= 10 && modelDiameter < 1 000');
+      document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter / 10).toLocaleString(); 
+      document.querySelectorAll(".unit-diameter")[i].innerText = "cm";
+
+    } else if (modelDiameter >= 1000 && modelDiameter < 1000000) {
+      console.log(i, 'modelDiameter >= 10 && modelDiameter < 1 000 000');
+      document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter / 1000).toLocaleString(); 
+      document.querySelectorAll(".unit-diameter")[i].innerText = "m";
+
+    } else if (modelDiameter >= 1000000) {
+      console.log(i, 'modelDiameter >= 1 000 000');
+      document.querySelectorAll(".model-diameter")[i].innerText = (modelDiameter / 1000000).toLocaleString(); 
+      document.querySelectorAll(".unit-diameter")[i].innerText = "km";
+
+    }
   }
+  console.log('\n');
 
+  // Calculate new model distances and generate HTML
+  for (let i = 0; i < modelDistancesArray.length; i++) {
+    const modelDistance = modelDistancesArray[i];
 
-
-
-  
-
-  if (scale <= 1000000000) {  
-    for (let i = 0; i < modelDistancesArray.length; i++) {
-      const modelDistance = modelDistancesArray[i];  
-  
+    if (modelDistance < 10) {
+      console.log(i, 'modelDistance < 10');
       document.querySelectorAll(".model-distance")[i].innerText = modelDistance.toLocaleString(); 
-      document.querySelectorAll(".unit-distance")[i].innerText = "km";
-    }
-  } else if (scale > 1000000000 && scale <= 1000000000000) {
-    for (let i = 0; i < modelDistancesArray.length; i++) {
-      const modelDistance = modelDistancesArray[i];  
-  
-      document.querySelectorAll(".model-distance")[i].innerText = (modelDistance * 1000).toLocaleString(); 
-      document.querySelectorAll(".unit-distance")[i].innerText = "m";
-    }
-  } else if (scale > 1000000000000 && scale <= 100000000000000) {  
-    for (let i = 0; i < modelDistancesArray.length; i++) {
-      const modelDistance = modelDistancesArray[i];  
-  
-      document.querySelectorAll(".model-distance")[i].innerText = (modelDistance * 100000).toLocaleString(); 
-      document.querySelectorAll(".unit-distance")[i].innerText = "cm";
-    }
-  } else if (scale > 100000000000000 && scale <= 1000000000000000) {
-    for (let i = 0; i < modelDistancesArray.length; i++) {
-      const modelDistance = modelDistancesArray[i];  
-  
-      document.querySelectorAll(".model-distance")[i].innerText = (modelDistance * 1000000).toLocaleString(); 
       document.querySelectorAll(".unit-distance")[i].innerText = "mm";
+
+    } else if (modelDistance >= 10 && modelDistance < 1000) {
+      console.log(i, 'modelDistance >= 10 && modelDistance < 1 000');
+      document.querySelectorAll(".model-distance")[i].innerText = (modelDistance / 10).toLocaleString(); 
+      document.querySelectorAll(".unit-distance")[i].innerText = "cm";
+
+    } else if (modelDistance >= 1000 && modelDistance < 1000000) {
+      console.log(i, 'modelDistance >= 10 && modelDistance < 1 000 000');
+      document.querySelectorAll(".model-distance")[i].innerText = (modelDistance / 1000).toLocaleString(); 
+      document.querySelectorAll(".unit-distance")[i].innerText = "m";
+
+    } else if (modelDistance >= 1000000) {
+      console.log(i, 'modelDistance >= 1 000 000');
+      document.querySelectorAll(".model-distance")[i].innerText = (modelDistance / 1000000).toLocaleString(); 
+      document.querySelectorAll(".unit-distance")[i].innerText = "km";
+
     }
   }
+  console.log('\n');
+
 }
