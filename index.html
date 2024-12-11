@@ -10,61 +10,59 @@
   <h1>Solar System Calculator</h1>
 
   <div id="diameter-input-div">
-    <p>If the diameter of the</p>
-
-    <select id="select-diameter-planet">
-      <option value="0">Sun</option>
-      <option value="1">Mercury</option>
-      <option value="2">Venus</option>
-      <option value="3">Earth</option>
-      <option value="4">Mars</option>
-      <option value="5">Jupiter</option>
-      <option value="6">Saturn</option>
-      <option value="7">Uranus</option>
-      <option value="8">Neptune</option>
-      <option value="9">Moon</option>
-    </select>
-    
-    <p>is</p>
-
-    <input type="text" id="diameter-input" placeholder="Enter a number">
-
-    <select id="select-diameter-unit">
-      <option value="0">km</option>
-      <option value="1">m</option>
-      <option value="2">cm</option>
-      <option value="3">mm</option>
-    </select>
-
-    <button type="button" id="calculate-diameter-button">Calculate</button>
+    <div class="inner-div">
+      <p>If the diameter of the</p>
+      <select id="select-diameter-planet">
+        <option value="0">Sun</option>
+        <option value="1">Mercury</option>
+        <option value="2">Venus</option>
+        <option value="3">Earth</option>
+        <option value="4">Mars</option>
+        <option value="5">Jupiter</option>
+        <option value="6">Saturn</option>
+        <option value="7">Uranus</option>
+        <option value="8">Neptune</option>
+        <option value="9">Moon</option>
+      </select> 
+      <p>is</p>
+    </div>
+    <div class="inner-div">
+      <input type="text" id="diameter-input" placeholder="Enter a number">
+      <select id="select-diameter-unit">
+        <option value="0">km</option>
+        <option value="1">m</option>
+        <option value="2">cm</option>
+        <option value="3">mm</option>
+      </select>
+      <button type="button" id="calculate-diameter-button">Calculate</button>
+    </div>
   </div>
 
   <div id="distance-input-div">
-    <p>If the distance of the</p>
-
-    <select id="select-distance-planet">
-      <option value="1">Mercury</option>
-      <option value="2">Venus</option>
-      <option value="3">Earth</option>
-      <option value="4">Mars</option>
-      <option value="5">Jupiter</option>
-      <option value="6">Saturn</option>
-      <option value="7">Uranus</option>
-      <option value="8">Neptune</option>
-    </select>
-    
-    <p>from the Sun is</p>
-
-    <input type="text" id="distance-input" placeholder="Enter a number">
-
-    <select id="select-distance-unit">
-      <option value="0">km</option>
-      <option value="1">m</option>
-      <option value="2">cm</option>
-      <option value="3">mm</option>
-    </select>
-
-    <button type="button" id="calculate-distance-button">Calculate</button>
+    <div class="inner-div">
+      <p>If the distance of the</p>
+      <select id="select-distance-planet">
+        <option value="1">Mercury</option>
+        <option value="2">Venus</option>
+        <option value="3">Earth</option>
+        <option value="4">Mars</option>
+        <option value="5">Jupiter</option>
+        <option value="6">Saturn</option>
+        <option value="7">Uranus</option>
+        <option value="8">Neptune</option>
+      </select>
+      <p>from the Sun is</p>
+    </div>    
+    <div class="inner-div">
+      <input type="text" id="distance-input" placeholder="Enter a number">
+      <select id="select-distance-unit">
+        <option value="0">km</option>
+        <option value="1">m</option>
+        <option value="2">cm</option>
+        <option value="3">mm</option>
+      </select>
+      <button type="button" id="calculate-distance-button">Calculate</button>
+    </div>    
   </div>
 
   <table>
@@ -74,11 +72,11 @@
       <th colspan="4" class="centered-header model-header">Model</th>
     </tr>
     <tr>
-      <th class="centered-header two-original-headers">Diameter in km</th>
-      <th class="centered-header two-original-headers">Distance in km</th>
+      <th class="centered-header original-diameter-header">Diameter in km</th>
+      <th class="centered-header original-distance-header">Distance in km</th>
       <th class="centered-header planet-header">Planet</th> 
-      <th class="centered-header two-model-headers" colspan="2">Diameter of the planet</th>
-      <th class="centered-header two-model-headers" colspan="2">Distance from the Sun</th>
+      <th class="centered-header model-diameter-header" colspan="2">Diameter of the planet</th>
+      <th class="centered-header model-diatsnce-header" colspan="2">Distance from the Sun</th>
     </tr>
     <tr>
       <td class="diameter-distance" id="original-diameter-sun">1 392 700</td>
@@ -165,11 +163,11 @@
 
   <table id="moon-table">
     <tr>
-      <th class="centered-header two-original-headers">Diameter in km</th>
-      <th class="centered-header two-original-headers">Distance in km</th>
-      <th class="centered-header planet-header">planet</th>
-      <th class="centered-header two-model-headers" colspan="2">Diameter of the planet</th>
-      <th class="centered-header two-model-headers" colspan="2">Distance from the Earth</th>
+      <th class="centered-header original-diameter-header">Diameter in km</th>
+      <th class="centered-header original-distance-header">Distance in km</th>
+      <th class="centered-header planet-header">Planet</th>
+      <th class="centered-header model-diameter-header" colspan="2">Diameter of the planet</th>
+      <th class="centered-header model-diatsnce-header" colspan="2">Distance from the Earth</th>
     </tr>
     <tr>
       <td class="diameter-distance" id="original-diameter-moon">3 475</td>

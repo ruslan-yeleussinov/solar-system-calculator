@@ -1,23 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;1,300&display=swap');
 
 body {
-  margin: 0;
-  padding: 0;
   background-color: rgb(14, 14, 29);
   color: white;
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
+  font-size: 1.2em;
+}
+
+@media (max-width: 500px) {
+  body {
+    font-size: 0.8em;
+  }
 }
 
 h1 {
+  margin: 20px auto 10px;
   text-align: center;
+  font-size: 1.8em;
 }
 
 /* INPUT SETION */
 
 #diameter-input-div,
 #distance-input-div {
-  width: 60%;
+  width: 95%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -25,14 +32,22 @@ h1 {
   margin: 0 auto 20px;
 }
 
+.inner-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
 p {
   margin: 0 10px;
-  font-size: 20px;
 }
 
 #diameter-input,
 #distance-input {
   margin: 0 10px;
+  width: 100px;
   height: 20px;
   padding-left: 5px;
 }
@@ -47,12 +62,41 @@ p {
   height: 25px;
 }
 
+@media (max-width: 500px) {
+  #diameter-input-div,
+  #distance-input-div {
+    flex-direction: column;
+  }
+
+  p {
+    margin: 0 5px;
+  }
+  
+  #diameter-input,
+  #distance-input {
+    margin: 0 5px;
+    height: 13px;
+    padding-left: 5px;
+    font-size: 0.8em;
+  }
+
+  #select-diameter-planet,
+  #select-diameter-unit,
+  #calculate-diameter-button,
+  #select-distance-planet,
+  #select-distance-unit,
+  #calculate-distance-button {
+    margin: 0 5px;
+    height: 18px;
+    font-size: 0.8em;
+  }
+}
+
 /* TABLE SETION */
 
 table {
   width: 95%;
   margin: 0 auto;
-  font-size: 20px;
 }
 
 table, th, td {
@@ -70,12 +114,20 @@ table, th, td {
   text-align: center;
 }
 
-.two-original-headers {
-  width: 18%;
+.original-diameter-header {
+  width: 12%;
 }
 
-.two-model-headers {
-  width: 27%;
+.original-distance-header {
+  width: 23%;
+}
+
+.model-diameter-header {
+  width: 22%;
+}
+
+.model-distance-header {
+  width: 33%;
 }
 
 .planet-header {
@@ -95,5 +147,6 @@ table, th, td {
 /* MOON TABLE */
 
 #moon-table {
+  width: 95%;
   margin-top: 30px;
 }
