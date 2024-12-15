@@ -174,6 +174,11 @@ firstButton.addEventListener("click", () => {
   console.log(`New diameter: ${newDiameter} ${selectedUnit}`);
   
   calculateNewModelAcordingToNewDiameter(selectedPlanetIndex, newDiameter, selectedUnitIndex);
+
+  // Clear input field and reset select fields
+  document.getElementById("select-diameter-planet").value = 0;
+  document.getElementById("diameter-input").value = "";
+  document.getElementById("select-diameter-unit").value = 0;
 });
 
 function calculateNewModelAcordingToNewDiameter(selectedPlanetIndex, newDiameter, selectedUnitIndex) {
@@ -279,6 +284,11 @@ secondButton.addEventListener('click', () => {
   console.log(`New distance: ${newDistance} ${selectedUnit}`);
   
   calculateNewModelAcordingToNewDistance(selectedPlanetIndex, newDistance, selectedUnitIndex);
+
+  // Clear input field and reset select fields
+  document.getElementById("select-distance-planet").value = 1;
+  document.getElementById("distance-input").value = "";
+  document.getElementById("select-distance-unit").value = 0;
 });
 
 function calculateNewModelAcordingToNewDistance(selectedPlanetIndex, newDistance, selectedUnitIndex) {
